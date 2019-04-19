@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $password = trim($_POST['password']);
 
-    }
+    }welcome
 
     
 
