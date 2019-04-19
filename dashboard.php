@@ -47,14 +47,14 @@
 
 											else{
 												while($row = mysqli_fetch_assoc($retval)) {
-													echo '<article>
-														<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-														<h3>{$row["name"]}</h3>
-														<p>{$row["description"]}</p>
-														<ul class="actions">
-															<li><a href="#" class="button">More</a></li>
+													echo "<article>
+														<a href='#' class='image'><img src='images/pic01.jpg' alt='' /></a>
+														<h3>{$row['name']}</h3>
+														<p>{$row['description']}</p>
+														<ul class='actions'>
+															<li><a href='#' class='button'>More</a></li>
 														</ul>
-													</article>'; 
+													</article>"; 
 												}
 											}
 										?>
