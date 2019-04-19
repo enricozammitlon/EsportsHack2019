@@ -1,3 +1,40 @@
+* {box-sizing: border-box}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: #12355b;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 25%; /* Four links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #E8E9EB;
+  color: #000;
+}
+
+.navbar a.active {
+  background-color: #f06543;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+/*
 body {
 	background-color: #475B63;
 	}
@@ -25,9 +62,9 @@ body {
   background-color: #4CAF50;
   color: white;
 }
-
+#########################################
 .topnav .search-container {
-  float: center;
+  float: right;
 }
 
 .topnav input[type=text] {
@@ -38,7 +75,7 @@ body {
 }
 
 .topnav .search-container button {
-  float: center;
+  float: right;
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
