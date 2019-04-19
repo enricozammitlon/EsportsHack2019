@@ -6,6 +6,8 @@
 -->
 <html>
 	<head>
+		<?php session_start(); ?>
+
 		<title>Dashboard</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -20,10 +22,10 @@
 					<div id="main">
 						<div class="inner">
 							<div class="topnav">
-								<a href="#organiser">Organiser</a>
-								<a href="#sponsor">Sponsor</a>
-								<a href="#player">Player</a>
-								<a href="#spectator">Spectator</a>
+								<button id="organiser" onClick = 'updateMenu(this.id)'>Organiser</button>
+								<button id="sponsor" onClick = 'updateMenu(this.id)'>Sponsor</button>
+								<button id="player" onClick = 'updateMenu(this.id)'>Player</button>					
+								<button id="spectator" onClick = 'updateMenu(this.id)'>Spectator</button>
 							</div>
 							<!-- Header -->
 								<header id="header">
@@ -78,35 +80,9 @@
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
-										<h2>Menu</h2>
+										<h2>Welcome back <?php echo $_SESSION['uName']?></h2>
 									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+									<ul id="menu-list">
 									</ul>
 								</nav>
 						</div>
@@ -123,3 +99,24 @@
 
 	</body>
 </html>
+
+<script>
+ 
+function updateMenu(theID){
+  	var request = $.ajax({
+   		url: theID+'Menu.php',
+   		type: 'get',
+   		dataType: 'html'
+ 	});
+ 
+	request.done( function ( data ) {
+ 		$('#menu-list').html( data );
+ 	});
+ 
+	request.fail( function ( jqXHR, textStatus) {
+ 		console.log( 'Sorry: ' + textStatus );
+ 	});
+ 
+}
+ 
+</script>
