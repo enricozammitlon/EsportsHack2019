@@ -22,7 +22,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="account.php" class="logo">Welcome <strong>$_SESSION['uName']</strong></a>
+									<a href="account.php" class="logo">Welcome <strong><?php echo $_SESSION['uName'] ?></strong></a>
 									<ul class="icons">
 										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 									</ul>
