@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $row=mysqli_fetch_assoc($retval);
                             $_SESSION['userID'] = $row['UID'];
                             $_SESSION['uName'] = $row['name'];
-                            header("location: index.php");
+                            header("location: dashboard.php");
 
                         } else{
 
