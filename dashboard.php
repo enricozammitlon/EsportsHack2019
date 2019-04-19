@@ -19,7 +19,12 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-
+							<div class="topnav">
+								<a href="#organiser">Organiser</a>
+								<a href="#sponsor">Sponsor</a>
+								<a href="#player">Player</a>
+								<a href="#spectator">Spectator</a>
+							</div>
 							<!-- Header -->
 								<header id="header">
 									<!-- Search -->
