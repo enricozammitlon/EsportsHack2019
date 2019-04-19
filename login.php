@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Display an error message if password is not valid
 
                             $password_err = 'The password you entered was not valid.'.$hashed_password;
-
+                            echo $password_err;
                         }
 
                     }
@@ -128,7 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Display an error message if username doesn't exist
 
                     $username_err = 'No account found with that username.';
-
+                    echo $username_err;
                 }
 
             } else{
