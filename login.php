@@ -1,4 +1,5 @@
 
+
 <?php
 
 // Include config file
@@ -55,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Prepare a select statement
 
-        $sql = "SELECT username, password FROM users WHERE username = ?";
+        $sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
 
         
 
@@ -100,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
 
                             $_SESSION['username'] = $username;
-                            $sql = 'SELECT UID,name FROM users WHERE username = \''.$username.'\'';
+                            $sql = 'SELECT UID,NAME FROM users WHERE USERNAME = \''.$username.'\'';
 
                             $retval = mysqli_query($conn,$sql);
 
@@ -110,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }    
                             $row=mysqli_fetch_assoc($retval);
                             $_SESSION['userID'] = $row['UID'];
-                            $_SESSION['uName'] = $row['name'];
+                            $_SESSION['uName'] = $row['NAME'];
                             header("location: dashboard.php");
 
                         } else{
@@ -118,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Display an error message if password is not valid
 
                             $password_err = 'The password you entered was not valid.'.$hashed_password;
-                            echo $password_err;
+
                         }
 
                     }
@@ -128,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Display an error message if username doesn't exist
 
                     $username_err = 'No account found with that username.';
-                    echo $username_err;
+
                 }
 
             } else{
@@ -140,7 +141,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         else{
-        	echo "Oops! Something went wrong af. Please try again later.";
+            echo "Oops! Something went wrong af. Please try again later.";
 
         }        
 
@@ -153,21 +154,78 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 ?>
 
-<!DOCTYPE HTML>
-<html>
+ 
+
+<!DOCTYPE html>
+
+<html lang="en">
+
 <head>
-	<link rel="stylesheet" href="assets/css/login.css">
+
+    <meta charset="UTF-8">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
+    <style type="text/css">
+
+        .status-section{
+            display:none;
+        }
+
+
+        body{ font: 14px sans-serif; justify-content: center;display: flex;background: #151515;padding-top: 100px;}
+
+        .wrapper{ width: 350px; padding: 20px; background: white;}
+
+    </style>
+
 </head>
+
 <body>
-<div class="login-page">
-  <div class="form">
-    <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="registration.html">Create an account</a></p>
-    </form>
-  </div>
-</div>
+
+    <div class="wrapper">
+
+        <h2>Login</h2>
+
+        <p>Please fill in your credentials to login.</p>
+
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+
+                <label>Username</label>
+
+                <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
+
+                <span class="help-block"><?php echo $username_err; ?></span>
+
+            </div>    
+
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+
+                <label>Password</label>
+
+                <input type="password" name="password" class="form-control">
+
+                <span class="help-block"><?php echo $password_err; ?></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <input type="submit" class="btn btn-primary" value="Login">
+
+            </div>
+
+            <p>Don't have an account?<br>Please contact your system administrator.</p>
+
+        </form>
+
+    </div>    
+
 </body>
+
 </html>
+
