@@ -161,7 +161,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 <div class="login-page">
   <div class="form">
-    <form class="login-form" action="welcome.php" method="post">
+    <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
       <button>login</button>
