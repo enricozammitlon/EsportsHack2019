@@ -110,6 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                               echo '<p>Error: Could not get data </p>';
                             }    
                             $row=mysqli_fetch_assoc($retval);
+                            session_start();
                             $_SESSION['userID'] = $row['UID'];
                             $_SESSION['uName'] = $row['NAME'];
                             header("location: dashboard.php");
