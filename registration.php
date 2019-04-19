@@ -51,9 +51,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err)){
 
         // Prepare a select statement
+        $password= password_hash($_POST["password"], PASSWORD_DEFAULT);
 
         $sql = 'INSERT INTO users VALUES (\''.$_POST["username"].'\',
-            \''.$_POST["password"].'\',
+            \''.$password.'\',
             \''.$_POST["name"].'\')';
 
         //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
