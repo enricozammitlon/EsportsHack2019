@@ -1,0 +1,19 @@
+{
+  "name": "crabcola",
+  "version": "1.0.0",
+  "description": "Submission for esports hackathon 2019",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enricozammitlon/EsportsHack2019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enricozammitlon/EsportsHack2019/issues"
+  },
+  "homepage": "https://github.com/enricozammitlon/EsportsHack2019#readme"
+}
