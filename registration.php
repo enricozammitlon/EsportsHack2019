@@ -10,7 +10,7 @@ require_once 'initDB.php';
 
 // Define variables and initialize with empty values
 
-$username = $password = "";
+$username = $password = = $password2 = $name = "";
 
 $username_err = $password_err = "";
 
@@ -19,8 +19,6 @@ $username_err = $password_err = "";
 // Processing form data when form is submitted
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
- 
 
     // Check if username is empty
 
@@ -54,100 +52,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Prepare a select statement
 
-        $sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
+        $sql = 'INSERT INTO users VALUES (\''.$_POST["username"].'\',
+            \''.$_POST["password"].'\',
+            \''.$_POST["name"].'\')';
+
+        //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
 
         
+        $retval = mysqli_query($conn,$sql);
 
-        if($stmt = mysqli_prepare($conn, $sql)){
-
-            // Bind variables to the prepared statement as parameters
-
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            
-
-            // Set parameters
-
-            $param_username = $username;
-
-            
-
-            // Attempt to execute the prepared statement
-
-            if(mysqli_stmt_execute($stmt)){
-
-                // Store result
-
-                mysqli_stmt_store_result($stmt);
-
-                
-
-                // Check if username exists, if yes then verify password
-
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $username, $hashed_password);
-
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-
-                            /* Password is correct, so start a new session and
-
-                            save the username to the session */
-
-                            session_start();
-
-                            $_SESSION['username'] = $username;
-                            $sql = 'SELECT UID,NAME FROM users WHERE USERNAME = \''.$username.'\'';
-
-                            $retval = mysqli_query($conn,$sql);
-
-                            if(! $retval ) {
-                              die('Could not get data: ' . mysqli_error());
-                              echo '<p>Error: Could not get data </p>';
-                            }    
-                            $row=mysqli_fetch_assoc($retval);
-                            $_SESSION['userID'] = $row['UID'];
-                            $_SESSION['uName'] = $row['NAME'];
-                            header("location: dashboard.php");
-
-                        } else{
-
-                            // Display an error message if password is not valid
-
-                            $password_err = 'The password you entered was not valid.'.$hashed_password;
-
-                        }
-
-                    }
-
-                } else{
-
-                    // Display an error message if username doesn't exist
-
-                    $username_err = 'No account found with that username.';
-
-                }
-
-            } else{
-
-                echo "Oops! Something went wrong. Please try again later.";
-
-            }
-
+        if(! $retval ) {
+          die('Could not get data: ' . mysqli_error($conn));
+          echo '<p>Error: Could not get data </p>';
         }
 
         else{
-            echo "Oops! Something went wrong af. Please try again later.";
-
-        }        
-
-        // Close statement
-
-        mysqli_stmt_close($stmt);
-
+          echo 'Successfully registered';
+          header("location: login.php");
+        }
     }
+
 }
 
 ?>
@@ -204,54 +128,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Birthday</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                    </div>
+                                    <label class="label">username</label>
+                                    <input class="input--style-4" type="text" name="username">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Gender</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Female
-                                            <input type="radio" name="gender">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Email</label>
+                                    <label class="label">email</label>
                                     <input class="input--style-4" type="email" name="email">
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone">
-                                </div>
-                            </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Password</label>
+                                    <label class="label">password</label>
                                     <input class="input--style-4" type="password" name="password">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Confirm Password</label>
-                                    <input class="input--style-4" type="password" name="password">
+                                    <label class="label">confirm password</label>
+                                    <input class="input--style-4" type="password" name="password2">
                                 </div>
                             </div>
                         </div>
