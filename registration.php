@@ -10,7 +10,7 @@ require_once 'initDB.php';
 
 // Define variables and initialize with empty values
 
-$username = $password = = $password2 = $name = "";
+$username = $password =  $password2 = $name = "";
 
 $username_err = $password_err = "";
 
@@ -51,11 +51,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err)){
 
         // Prepare a select statement
-/*
+
         $sql = 'INSERT INTO users VALUES (\''.$_POST["username"].'\',
             \''.$_POST["password"].'\',
             \''.$_POST["name"].'\')';
-*/
+
         //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
 
         
