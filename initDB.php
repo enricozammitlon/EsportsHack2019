@@ -1,9 +1,9 @@
     <?php
 
-        $hostname = '127.0.0.1:3306';
-        $username = 'root';
-        $password = '';
-        $database = 'eta';
+        $hostname = 'jnc6n3xpbgc3kek2.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306';
+        $username = 'pxi4yt1ihye8ddzi';
+        $password = 'zmg4z48v6aa2ihpn';
+        $database = 'il0oltkkmzgthhrq';
 
 
         // Create connection

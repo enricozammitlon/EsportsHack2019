@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Prepare a select statement
 
-        $sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
+        $sql = "SELECT username, password FROM users WHERE username = ?";
 
         
 
@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
 
                             $_SESSION['username'] = $username;
-                            $sql = 'SELECT ISADMIN,USERID,NAME FROM users WHERE USERNAME = \''.$username.'\'';
+                            $sql = 'SELECT UID,name FROM users WHERE username = \''.$username.'\'';
 
                             $retval = mysqli_query($conn,$sql);
 
@@ -109,9 +109,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                               echo '<p>Error: Could not get data </p>';
                             }    
                             $row=mysqli_fetch_assoc($retval);
-                            $_SESSION['isAdmin'] = $row['ISADMIN'];
-                            $_SESSION['userID'] = $row['USERID'];
-                            $_SESSION['uName'] = $row['NAME'];
+                            $_SESSION['userID'] = $row['UID'];
+                            $_SESSION['uName'] = $row['name'];
                             header("location: index.php");
 
                         } else{
