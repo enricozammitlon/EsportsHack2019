@@ -22,16 +22,12 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="account.php" class="logo">Welcome <strong><?php echo $_SESSION['uName'] ?></strong></a>
 									<!-- Search -->
 								<section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-									</ul>
 								</header>
 
 							<!-- Section -->
