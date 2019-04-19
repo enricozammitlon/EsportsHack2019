@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $password= password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-        $sql = 'INSERT INTO users VALUES (\''.$_POST["username"].'\',
+        $sql = 'INSERT INTO users (username,password,name) VALUES (\''.$_POST["username"].'\',
             \''.$password.'\',
             \''.$_POST["name"].'\')';
 
