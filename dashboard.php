@@ -35,6 +35,8 @@
 									</header>
 									<div class="posts">
 										<?php 
+											require_once 'initDB.php';
+
 									        $sql = 'SELECT * FROM events ';
 									        $retval = mysqli_query($conn,$sql);
 
@@ -107,7 +109,7 @@
 										<li><a href="#">Amet Lacinia</a></li>
 									</ul>
 								</nav>
-								
+
 							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
