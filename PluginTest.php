@@ -1,11 +1,11 @@
 <div class="user">
     <header class="user__header">
         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
-        <h1 class="user__title">Plugin Testing</h1>
-		<link rel="stylesheet" href="PluginTest.css" />
+        <h1 class="user__title">Current Player: Ninja</h1>
+		<link rel="stylesheet" href="assets/css/PluginTest.css" />
     </header>
 	
-	<body>
+	<div>
     <!-- Add a placeholder for the Twitch embed -->
     <div id="twitch-embed"></div>
 
@@ -15,12 +15,12 @@
     <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
     <script type="text/javascript">
       new Twitch.Embed("twitch-embed", {
-        width: 1000,
-        height: 600,
+        width: 400,
+        height: 300,
         channel: "ninja"
       });
     </script>
-  </body>
+  </div>
     
     <!--<form class="form">
         <div class="form__group">
