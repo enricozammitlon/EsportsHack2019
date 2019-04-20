@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
      $specPrice = trim($_POST["specPrice"]);
 
-     $managerID = 1;
+     $managerID = $_SESSION['userID'] ;
 
      //$managerID = $_SESSION['userID'] 
 

@@ -21,6 +21,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
      $eventID = trim($_POST["eventID"]);
 
+     $userID = $_SESSION['userID'] ;
+
 
     // Validate credentials
 
@@ -32,7 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             \''.$role.'\',
             \''.$eventID.'\')'; 
             */
-                  $sql = 'INSERT INTO tickets (ticketType) VALUES (\''.$role.'\')'; 
+                  $sql = 'INSERT INTO tickets (ticketType, userID) VALUES (\''.$role.'\')',
+                  (\''.$userID.'\')'; 
 
         //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
 
