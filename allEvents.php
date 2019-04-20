@@ -10,7 +10,7 @@
 
 </header>
 
-<!-- Section -->
+<!-- Section 	EventPics/'.$row['eventID'].' -->
 <section id="eventResults">
 	<header class="major">
 		<h2>All events</h2>
@@ -36,7 +36,7 @@
 			else{
 				while($row = mysqli_fetch_assoc($retval)) {
 					echo "<article>
-						<a href='#' class='image'><img src='images/pic01.jpg' alt='' /></a>
+						<a href='#' class='image'><img src='images/EventPics/".$row['eventID'].".jpg' alt='' /></a> 	
 						<h3>{$row['name']}</h3>
 						<p>{$row['description']}</p>
 						<ul class='actions'>
