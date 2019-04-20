@@ -2,7 +2,7 @@
 echo '
 <button id="create" onClick = "findEvents()">Find Event</button>
 <button id="personal" onClick = "findPlayer()">Find Player</button>
-<button id="personal" onClick = "myTickets()">My Tickets</button>'
+<button id="personalSpect" onClick = "myTickets()">My Tickets</button>'
 ?>
 
 <script>
@@ -28,7 +28,10 @@ function myTickets(){
 	var request = $.ajax({
 		url: 'getTickets.php',
 		type: 'post',
-		dataType: 'html'
+		dataType: 'html',
+		data: { 
+        "type": "Spectator",
+    	}
 	});
 
 	request.done( function ( data ) {

@@ -21,7 +21,7 @@
 
 			if($_SERVER["REQUEST_METHOD"] == "POST"){
 				session_start(); 
-				$sql = 'SELECT events.name, events.description FROM events INNER JOIN tickets WHERE events.eventID = tickets.eventID AND tickets.userID = '.$_SESSION["userID"].'';
+				$sql = "SELECT events.name, events.description , tickets.ticketType FROM events INNER JOIN tickets WHERE events.eventID = tickets.eventID AND tickets.ticketType = '".$_POST['type']."' AND tickets.userID = ".$_SESSION["userID"]."";
 			}
 	        $retval = mysqli_query($conn,$sql);
 

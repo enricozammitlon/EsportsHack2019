@@ -13,7 +13,7 @@
 <!-- Section -->
 <section id="eventResults">
 	<header class="major">
-		<h2>All events</h2>
+		<h2>Your Sponsorships</h2>
 	</header>
 	<div id="search-results" class="posts">
 		<?php 
@@ -21,11 +21,8 @@
 
 			if($_SERVER["REQUEST_METHOD"] == "POST"){
 				session_start(); 
-				$sql = 'SELECT * FROM events WHERE managerID = '.$_SESSION["userID"].'';
+				$sql = 'SELECT events.name, events.description FROM events INNER JOIN sponsorships WHERE events.eventID = sponsorships.eventID AND sponsorships.userID = '.$_SESSION["userID"].'';
 			}
-			else{
-	        	$sql = 'SELECT * FROM events ';
-	        }
 	        $retval = mysqli_query($conn,$sql);
 
 			if(! $retval ) {
@@ -40,7 +37,7 @@
 						<h3>{$row['name']}</h3>
 						<p>{$row['description']}</p>
 						<ul class='actions'>
-							<button id={$row['eventID']} onClick = 'buyTicket()''>Buy Ticket</button>
+							<li><a href='#' class='button'>More</a></li>
 						</ul>
 					</article>"; 
 				}
