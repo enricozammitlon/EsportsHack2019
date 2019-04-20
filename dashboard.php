@@ -30,6 +30,7 @@
 							<!-- Header -->
 								<header id="header">
 									<!-- Search -->
+
 								<section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
@@ -42,7 +43,7 @@
 									<header class="major">
 										<h2>All events</h2>
 									</header>
-									<div class="posts">
+									<div id="search-results" class="posts">
 										<?php 
 											require_once 'initDB.php';
 
@@ -101,7 +102,35 @@
 </html>
 
 <script>
+function delay(callback, ms) {
+  var timer = 0;
+  return function() {
+    var context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      callback.apply(context, args);
+    }, ms || 0);
+  };
+}
+
+$('#query').keyup(delay(function (e) {
+  var request = $.ajax({
+   		url: 'search.php',
+   		type: 'post',
+   		data: { 
+        "term": this.value,
+    	}
+ 	});
  
+	request.done( function ( data ) {
+ 		$('#search-results').html( data );
+ 	});
+ 
+	request.fail( function ( jqXHR, textStatus) {
+ 		console.log( 'Sorry: ' + textStatus );
+ 	});
+}, 500));
+
 function updateMenu(theID){
   	var request = $.ajax({
    		url: theID+'Menu.php',
