@@ -1,3 +1,82 @@
+
+<?php
+
+// Include config file
+
+require_once 'initDB.php';
+
+ 
+
+// Define variables and initialize with empty values
+
+$eventName = $eventLoc =  $description = $startDate = $endDate = $playerCap = $specCap = $playerPrice = $specPrice = $managerID = "";
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    // Check if username is empty
+
+     $eventName = trim($_POST["eventName"]);
+
+    // Check if password is empty
+
+     $eventLoc = trim($_POST["eventLoc"]);
+
+     $description = trim($_POST["description"]);
+
+     $startDate = trim($_POST["startDate"]);
+
+     $endDate = trim($_POST["endDate"]);
+
+     $playerCap = trim($_POST["playerCap"]);
+
+     $specCap = trim($_POST["specCap"]);
+
+     $playerPrice = trim($_POST["playerPrice"]);
+
+     $specPrice = trim($_POST["specPrice"]);
+
+     $managerID = 1;
+
+     //$managerID = $_SESSION['userID'] 
+
+    // Validate credentials
+        // Prepare a select statement
+     	 /*       $sql = 'INSERT INTO tickets (name,surname,ticketType, eventID) VALUES (\''.$name.'\',
+            \''.$surname.'\',
+            \''.$role.'\',
+            \''.$eventID.'\')'; 		$_SESSION['userID'] 
+            */
+        $sql = 'INSERT INTO events (name, eventLoc, managerID, description, specNo, playerNo, specPrice, playerPrice, startDate, endDate) 
+        	VALUES (\''.$eventName.'\',
+            \''.$eventLoc.'\',
+            \''.$managerID.'\',
+            \''.$description.'\',
+            \''.$specCap.'\',
+            \''.$playerCap.'\',
+            \''.$specPrice.'\',
+            \''.$playerPrice.'\',
+            \''.$startDate.'\',
+            \''.$endDate.'\')'; 
+
+        //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
+
+        
+        $retval = mysqli_query($conn,$sql);
+
+        if(! $retval ) {
+          die('Could not get data: ' . mysqli_error($conn));
+          echo '<p>Error: Could not get data </p>';
+        }
+
+        else{
+          echo 'Success!';
+          header("location: createEvent.php");
+        }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,84 +111,86 @@
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-7 col-md-push-5">
-						<div class="booking-cta">
-							<h1>Create your Event</h1>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
-								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
-								Perspiciatis.
-							</p>
+					<form method="POST" action="createEvent.php">
+						<div class="col-md-7 col-md-push-5">
+							<div class="booking-cta">
+								<h1>Create your Event</h1>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+									ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+									Perspiciatis.
+								</p>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4 col-md-pull-7">
-						<div class="booking-form">
-							<form>
-								<div class="form-group">
-									<span class="form-label">Event Name</span>
-									<input class="form-control" type="text" required placeholder="Please enter your event name">
-								</div>
-								<div class="form-group">
-									<span class="form-label">Event Location</span>
-									<input class="form-control" type="text" required placeholder="Please enter your event location">
-								</div>
-								
-								<div class="form-group">
-									<span class="form-label">Description</span>
-									<input class="form-control" type="text" required placeholder="Please enter a brief description">
-								</div>
-								
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Start Date</span>
-											<input class="form-control" type="date" required>
+						<div class="col-md-4 col-md-pull-7">
+							<div class="booking-form">
+								<form>
+									<div class="form-group">
+										<span class="form-label">Event Name</span>
+										<input class="form-control" type="text" name = "eventName" required placeholder="Please enter your event name">
+									</div>
+									<div class="form-group">
+										<span class="form-label">Event Location</span>
+										<input class="form-control" type="text" required name = "eventLoc" placeholder="Please enter your event location">
+									</div>
+									
+									<div class="form-group">
+										<span class="form-label">Description</span>
+										<input class="form-control" type="text" required name = "description" placeholder="Please enter a brief description">
+									</div>
+									
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<span class="form-label">Start Date</span>
+												<input class="form-control" type="date" required name = "startDate">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<span class="form-label">End Date</span>
+												<input class="form-control" type="date" required name = "endDate">
+											</div>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">End Date</span>
-											<input class="form-control" type="date" required>
+									
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<span class="form-label">Player Capacity</span>
+												<input class="form-control" type="text" required name = "playerCap" placeholder="100">
+											</div>
+										</div>		
+										<div class="col-sm-6">
+											<div class="form-group">
+												<span class="form-label">Spectator Capacity</span>
+												<input class="form-control" type="text" required name = "specCap" placeholder="200">
+											</div>
 										</div>
 									</div>
-								</div>
-								
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Player Capacity</span>
-											<input class="form-control" type="text" required placeholder="100">
-										</div>
-									</div>		
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Spectator Capacity</span>
-											<input class="form-control" type="text" required placeholder="200">
-										</div>
-									</div>
-								</div>
 
 
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Player Prices</span>
-											<input class="form-control" type="text" required placeholder="15">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<span class="form-label">Player Prices</span>
+												<input class="form-control" type="text" name = "playerPrice" required placeholder="15">
+											</div>
+										</div>		
+										<div class="col-sm-6">
+											<div class="form-group">
+												<span class="form-label">Spectator Prices</span>
+												<input class="form-control" type="text" name = "specPrice" required placeholder="10">
+											</div>
 										</div>
 									</div>		
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Spectator Prices</span>
-											<input class="form-control" type="text" required placeholder="10">
-										</div>
+									
+									<div class="form-btn">
+										<button class="submit-btn">Submit event!</button>
 									</div>
-								</div>		
-								
-								<div class="form-btn">
-									<button class="submit-btn">Submit event!</button>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

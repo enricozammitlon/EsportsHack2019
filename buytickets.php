@@ -1,3 +1,60 @@
+
+<?php
+
+// Include config file
+
+require_once 'initDB.php';
+
+ 
+
+// Define variables and initialize with empty values
+
+$ticketno = $role = "";
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    // Check if username is empty
+
+     $ticketno = trim($_POST["ticketno"]);
+
+     $role = trim($_POST["role"]);
+
+     $eventID = trim($_POST["eventID"]);
+
+
+    // Validate credentials
+
+        // Prepare a select statement
+     for ($i=1; $i <= $ticketno; $i++) { 
+
+     	 /*       $sql = 'INSERT INTO tickets (name,surname,ticketType, eventID) VALUES (\''.$name.'\',
+            \''.$surname.'\',
+            \''.$role.'\',
+            \''.$eventID.'\')'; 
+            */
+                  $sql = 'INSERT INTO tickets (ticketType) VALUES (\''.$role.'\')'; 
+
+        //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
+
+        
+        $retval = mysqli_query($conn,$sql);
+
+        if(! $retval ) {
+          die('Could not get data: ' . mysqli_error($conn));
+          echo '<p>Error: Could not get data </p>';
+        }
+
+        else{
+          echo 'Success!';
+          header("location: buytickets.php");
+        }
+     }
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,55 +89,57 @@
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-7 col-md-push-5">
-						<div class="booking-cta">
-							<h1>Book your tickets</h1>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
-								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
-								Perspiciatis.
-							</p>
+					<form method="POST" action="buytickets.php">
+						<div class="col-md-7 col-md-push-5">
+							<div class="booking-cta">
+								<h1>Book your tickets</h1>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+									ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+									Perspiciatis.
+								</p>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4 col-md-pull-7">
-						<div class="booking-form">
-							<form>
-								<div class="form-group">
-									<span class="form-label">Name</span>
-									<input class="form-control" type="text" placeholder="Please enter your name">
-								</div>
-																<div class="form-group">
-									<span class="form-label">Surname</span>
-									<input class="form-control" type="text" placeholder="Please enter your surname">
-								</div>
-								<div class="row">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<span class="form-label">No. of Tickets</span>
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-											</select>
-											<span class="select-arrow"></span>
+						<div class="col-md-4 col-md-pull-7">
+							<div class="booking-form">
+								<form>
+									<div class="form-group">
+										<span class="form-label">Name</span>
+										<input class="form-control" type="text" name = "name" placeholder="Please enter your name">
+									</div>
+									<div class="form-group">
+										<span class="form-label">Surname</span>
+										<input class="form-control" type="text" name = "surname" placeholder="Please enter your surname">
+									</div>
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="form-group">
+												<span class="form-label">No. of Tickets</span>
+												<select class="form-control" name = "ticketno">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+												<span class="select-arrow"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+												<span class="form-label">Role</span>
+												<select class="form-control" name = "role">
+													<option>Player</option>
+													<option>Spectator</option>
+												</select>
+												<span class="select-arrow"></span>
+											</div>
 										</div>
 									</div>
-									<div class="col-sm-4">
-										<div class="form-group">
-											<span class="form-label">Role</span>
-											<select class="form-control">
-												<option>Player</option>
-												<option>Spectator</option>
-											</select>
-											<span class="select-arrow"></span>
-										</div>
+									<div class="form-btn">
+										<button class="submit-btn">Book now!</button>
 									</div>
-								</div>
-								<div class="form-btn">
-									<button class="submit-btn">Book now!</button>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
