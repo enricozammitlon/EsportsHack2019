@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
-					<form method="POST" action="buytickets.php">
+					<form method="POST" action="dashboard.php">
 						<div class="col-md-7 col-md-push-5">
 							<div class="booking-cta">
 								<h1>Book your tickets</h1>
