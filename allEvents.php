@@ -41,6 +41,7 @@
 						<p>{$row['description']}</p>
 						<ul class='actions'>
 							<li><a href='#' class='button'>More</a></li>
+							<button id={$row['eventID']} onClick = 'buyTicket(this.id)''>Buy Ticket</button>
 						</ul>
 					</article>"; 
 				}

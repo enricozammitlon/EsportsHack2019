@@ -81,4 +81,22 @@ function updateMenu(theID){
  
 }
  
+function buyTicket(theID){
+  	var request = $.ajax({
+   		url: 'buytickets.php',
+   		type: 'get',
+   		data: { 
+        "eventID": theID
+    	}
+ 	});
+ 
+	request.done( function ( data ) {
+ 		$('#main-window').html( data );
+ 	});
+ 
+	request.fail( function ( jqXHR, textStatus) {
+ 		console.log( 'Sorry: ' + textStatus );
+ 	});
+ 
+}
 </script>

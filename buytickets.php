@@ -5,7 +5,8 @@
 
 require_once 'initDB.php';
 
- 
+session_start();
+
 
 // Define variables and initialize with empty values
 
@@ -28,20 +29,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Prepare a select statement
      for ($i=1; $i <= $ticketno; $i++) { 
-
      	 /*       $sql = 'INSERT INTO tickets (name,surname,ticketType, eventID) VALUES (\''.$name.'\',
             \''.$surname.'\',
             \''.$role.'\',
             \''.$eventID.'\')'; 
             */
-                  $sql = 'INSERT INTO tickets (ticketType, userID) VALUES (\''.$role.'\')',
-                  (\''.$userID.'\')'; 
+        $sql = 'INSERT INTO tickets (eventID,ticketType,userID) VALUES (\''.$eventID.'\',
+            \''.$role.'\',
+            \''.$userID.'\');';
 
         //$sql = "SELECT USERNAME, PASSWORD FROM users WHERE USERNAME = ?";
 
         
         $retval = mysqli_query($conn,$sql);
-
+    }
         if(! $retval ) {
           die('Could not get data: ' . mysqli_error($conn));
           echo '<p>Error: Could not get data </p>';
@@ -49,10 +50,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         else{
           echo 'Success!';
-          header("location: buytickets.php");
+          header("location: dashboard.php");
         }
-     }
-
 }
 
 ?>
@@ -92,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
-					<form method="POST" action="dashboard.php">
+					<form method="POST" action="buytickets.php">
 						<div class="col-md-7 col-md-push-5">
 							<div class="booking-cta">
 								<h1>Book your tickets</h1>
@@ -104,7 +103,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</div>
 						<div class="col-md-4 col-md-pull-7">
 							<div class="booking-form">
-								<form>
 									<div class="form-group">
 										<span class="form-label">Name</span>
 										<input class="form-control" type="text" name = "name" placeholder="Please enter your name">
@@ -136,10 +134,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 											</div>
 										</div>
 									</div>
+									<input type="hidden" name="eventID" value=<?php echo $_GET['eventID'] ?> >
 									<div class="form-btn">
-										<button class="submit-btn">Book now!</button>
+										<button type="submit" class="submit-btn">Book now!</button>
 									</div>
-								</form>
 							</div>
 						</div>
 					</form>
