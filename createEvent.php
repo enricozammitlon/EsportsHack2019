@@ -13,10 +13,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/createEvent.min.css" />
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/createEvent.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +34,7 @@
 				<div class="row">
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
-							<h1>Book your tickets</h1>
+							<h1>Create your Event</h1>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
 								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
 								Perspiciatis.
@@ -45,48 +45,67 @@
 						<div class="booking-form">
 							<form>
 								<div class="form-group">
-									<span class="form-label">Name and Surname</span>
-									<input class="form-control" type="text" placeholder="Please enter your name">
+									<span class="form-label">Event Name</span>
+									<input class="form-control" type="text" required placeholder="Please enter your event name">
 								</div>
+								<div class="form-group">
+									<span class="form-label">Event Location</span>
+									<input class="form-control" type="text" required placeholder="Please enter your event location">
+								</div>
+								
+								<div class="form-group">
+									<span class="form-label">Description</span>
+									<input class="form-control" type="text" required placeholder="Please enter a brief description">
+								</div>
+								
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
-											<span class="form-label">Check In</span>
+											<span class="form-label">Start Date</span>
 											<input class="form-control" type="date" required>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<span class="form-label">Check out</span>
+											<span class="form-label">End Date</span>
 											<input class="form-control" type="date" required>
 										</div>
 									</div>
 								</div>
+								
 								<div class="row">
-									<div class="col-sm-4">
+									<div class="col-sm-6">
 										<div class="form-group">
-											<span class="form-label">Number of Tickets</span>
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-											</select>
-											<span class="select-arrow"></span>
+											<span class="form-label">Player Capacity</span>
+											<input class="form-control" type="text" required placeholder="100">
 										</div>
-									</div>
-									<div class="col-sm-4">
+									</div>		
+									<div class="col-sm-6">
 										<div class="form-group">
-											<span class="form-label">Role</span>
-											<select class="form-control">
-												<option>Player</option>
-												<option>Spectator</option>
-											</select>
-											<span class="select-arrow"></span>
+											<span class="form-label">Spectator Capacity</span>
+											<input class="form-control" type="text" required placeholder="200">
 										</div>
 									</div>
 								</div>
+
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Player Prices</span>
+											<input class="form-control" type="text" required placeholder="15">
+										</div>
+									</div>		
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Spectator Prices</span>
+											<input class="form-control" type="text" required placeholder="10">
+										</div>
+									</div>
+								</div>		
+								
 								<div class="form-btn">
-									<button class="submit-btn">Book now!</button>
+									<button class="submit-btn">Submit event!</button>
 								</div>
 							</form>
 						</div>

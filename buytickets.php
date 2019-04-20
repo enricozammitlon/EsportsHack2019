@@ -13,10 +13,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/buytickets.min.css" />
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/buytickets.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,27 +45,17 @@
 						<div class="booking-form">
 							<form>
 								<div class="form-group">
-									<span class="form-label">Name and Surname</span>
+									<span class="form-label">Name</span>
 									<input class="form-control" type="text" placeholder="Please enter your name">
 								</div>
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Check In</span>
-											<input class="form-control" type="date" required>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<span class="form-label">Check out</span>
-											<input class="form-control" type="date" required>
-										</div>
-									</div>
+																<div class="form-group">
+									<span class="form-label">Surname</span>
+									<input class="form-control" type="text" placeholder="Please enter your surname">
 								</div>
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="form-group">
-											<span class="form-label">Number of Tickets</span>
+											<span class="form-label">No. of Tickets</span>
 											<select class="form-control">
 												<option>1</option>
 												<option>2</option>
