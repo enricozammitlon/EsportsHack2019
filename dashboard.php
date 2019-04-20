@@ -1,76 +1,9 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<?php session_start(); ?>
+<?php require_once 'header.php' ?>
+							<div id="main-window">
 
-		<title>Dashboard</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/dashboard.css" />
-	</head>
-	<body class="is-preload">
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<div class="topnav">
-								<button id="organiser" onClick = 'updateMenu(this.id)'>Organiser</button>
-								<button id="sponsor" onClick = 'updateMenu(this.id)'>Sponsor</button>
-								<button id="player" onClick = 'updateMenu(this.id)'>Player</button>					
-								<button id="spectator" onClick = 'updateMenu(this.id)'>Spectator</button>
+								<?php require_once 'allEvents.php' ?>
+								
 							</div>
-							<!-- Header -->
-								<header id="header">
-									<!-- Search -->
-
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-								</header>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>All events</h2>
-									</header>
-									<div id="search-results" class="posts">
-										<?php 
-											require_once 'initDB.php';
-
-									        $sql = 'SELECT * FROM events ';
-									        $retval = mysqli_query($conn,$sql);
-
-											if(! $retval ) {
-											  die('Could not get data: ' . mysqli_error());
-											  echo '<p>Error: Could not get data </p>';
-											}
-
-											else{
-												while($row = mysqli_fetch_assoc($retval)) {
-													echo "<article>
-														<a href='#' class='image'><img src='images/pic01.jpg' alt='' /></a>
-														<h3>{$row['name']}</h3>
-														<p>{$row['description']}</p>
-														<ul class='actions'>
-															<li><a href='#' class='button'>More</a></li>
-														</ul>
-													</article>"; 
-												}
-											}
-										?>
-									</div>
-								</section>
-
 						</div>
 					</div>
 
