@@ -40,7 +40,7 @@
 						<h3>{$row['name']}</h3>
 						<p>{$row['description']}</p>
 						<ul class='actions'>
-							<button id={$row['eventID']} onClick = 'buyTicket()''>Buy Ticket</button>
+							<button id={$row['eventID']} onClick = 'buyTicket(this.id)''>Buy Ticket</button>
 						</ul>
 					</article>"; 
 				}
