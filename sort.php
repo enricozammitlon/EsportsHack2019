@@ -40,16 +40,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	echo $resultmin;
 }
 ?>
-
-		<div class="col-sm-4">
-			<div class="form-group">
-				<span class="form-label">Sort by...</span>
-				<select id="sorter" class="form-control" name = "filterby">
-					<option>Sort by No. of spectators (asc)</option>
-					<option>Sort by No. of spectators (desc)</option>
-					<option>Sort by Location (asc)</option>
-					<option>Sort by Location (desc)</option>
-				</select>
-				<span class="select-arrow"></span>
-			</div>
-		</div>
