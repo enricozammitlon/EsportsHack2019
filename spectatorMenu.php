@@ -46,7 +46,7 @@ function myTickets(){
 
 function findPlayer(){
 	var request = $.ajax({
-		url: 'PluginTest.php',
+		url: 'PluginTest.html',
 		type: 'get'
 	});
 
