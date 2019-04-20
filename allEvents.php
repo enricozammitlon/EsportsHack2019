@@ -5,6 +5,21 @@
 <section id="search" class="alt">
 	<form method="post" action="#">
 		<input type="text" name="query" id="query" placeholder="Search" />
+		<button id="organiser" onClick = 'updateMenu(this.id)'>Organiser</button>
+
+		<div class="col-sm-4">
+			<div class="form-group">
+				<span class="form-label">Sort by...</span>
+				<select class="form-control" name = "filterby">
+					<option>Sort by No. of spectators (asc)</option>
+					<option>Sort by No. of spectators (desc)</option>
+					<option>Sort by Location (asc)</option>
+					<option>Sort by Location (desc)</option>
+				</select>
+				<span class="select-arrow"></span>
+			</div>
+		</div>
+
 	</form>
 </section>
 
@@ -40,7 +55,7 @@
 						<h3>{$row['name']}</h3>
 						<p>{$row['description']}</p>
 						<ul class='actions'>
-							<button id={$row['eventID']} onClick = 'buyTicket()''>Buy Ticket</button>
+							<li><a href='#' class='button'>More</a></li>
 						</ul>
 					</article>"; 
 				}
