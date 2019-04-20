@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
      $specPrice = trim($_POST["specPrice"]);
 
-     $managerID = 1;
+     $managerID = $_SESSION['userID'] ;
 
      //$managerID = $_SESSION['userID'] 
 
@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
-					<form method="POST" action="createEvent.php">
+					<form method="POST" action="dashboard.php">
 						<div class="col-md-7 col-md-push-5">
 							<div class="booking-cta">
 								<h1>Create your Event</h1>
