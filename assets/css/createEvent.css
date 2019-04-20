@@ -1,11 +1,11 @@
 .section {
 	position: relative;
-	height: 100vh;
+	height: 1000px;
 }
 
 .section .section-center {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 0;
 	right: 0;
 	-webkit-transform: translateY(-50%);
@@ -121,18 +121,19 @@
 }
 
 .booking-cta {
-	margin-top: 80px;
-	margin-bottom: 30px;
+	/*! margin-top: 80px; */
+	/*! margin-bottom: 30px; */
+	margin-right: 145px;
 }
 
 .booking-cta h1 {
-	font-size: 52px;
+	font-size: 42px;
 	text-transform: uppercase;
 	color: #fff;
 	font-weight: 700;
 }
 
 .booking-cta p {
-	font-size: 16px;
+	font-size: 17px;
 	color: rgba(255, 255, 255, 0.8);
 }

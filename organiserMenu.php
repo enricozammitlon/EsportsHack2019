@@ -25,40 +25,21 @@ function callCreate(){
 
 }
  
-
-$(document).ready(function() {
-    $("#create a").click(function() {
-    	$('#main-window').html("");
-    	var request = $.ajax({
-	   		url: 'createEvent.php',
-	   		type: 'get'
-	 	});
-	 
-		request.done( function ( data ) {
-	 		$('#main-window').html( data );
-	 	});
-	 
-		request.fail( function ( jqXHR, textStatus) {
-	 		console.log( 'Sorry: ' + textStatus );
-	 	});
+function callPersonal(){
+	var request = $.ajax({
+		url: 'allEvents.php',
+		type: 'post',
+		dataType: 'html'
 	});
 
-	$("#personal a").click(function() {
-	    	$('#main-window').html("");
-	    	var request = $.ajax({
-		   		url: 'createEvent.php',
-		   		type: 'get'
-		 	});
-		 
-			request.done( function ( data ) {
-		 		$('#main-window').html( data );
-		 	});
-		 
-			request.fail( function ( jqXHR, textStatus) {
-		 		console.log( 'Sorry: ' + textStatus );
-		 	});
-		});
+	request.done( function ( data ) {
+		$('#main-window').html( data );
+	});
 
+	request.fail( function ( jqXHR, textStatus) {
+		console.log( 'Sorry: ' + textStatus );
+	});
 
-});
+}
+
 </script>

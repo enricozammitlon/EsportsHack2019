@@ -3593,3 +3593,12 @@ input, select, textarea {
   background-color: #4CAF50;
   color: white;
 }
+
+#menu-list {
+	display: flex;
+	flex-direction: column;
+}
+
+#personal {
+ margin-top: 15px;
+}
