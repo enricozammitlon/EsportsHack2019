@@ -13,7 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css" />
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="assets/css/style.css" />
@@ -34,7 +34,7 @@
 				<div class="row">
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
-							<h1>Make your reservation</h1>
+							<h1>Book your tickets</h1>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
 								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
 								Perspiciatis.
@@ -45,8 +45,8 @@
 						<div class="booking-form">
 							<form>
 								<div class="form-group">
-									<span class="form-label">Your Destination</span>
-									<input class="form-control" type="text" placeholder="Enter a destination or hotel name">
+									<span class="form-label">Name and Surname</span>
+									<input class="form-control" type="text" placeholder="Please enter your name">
 								</div>
 								<div class="row">
 									<div class="col-sm-6">
@@ -65,7 +65,7 @@
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="form-group">
-											<span class="form-label">Rooms</span>
+											<span class="form-label">Number of Tickets</span>
 											<select class="form-control">
 												<option>1</option>
 												<option>2</option>
@@ -76,29 +76,17 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="form-group">
-											<span class="form-label">Adults</span>
+											<span class="form-label">Role</span>
 											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-											</select>
-											<span class="select-arrow"></span>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="form-group">
-											<span class="form-label">Children</span>
-											<select class="form-control">
-												<option>0</option>
-												<option>1</option>
-												<option>2</option>
+												<option>Player</option>
+												<option>Spectator</option>
 											</select>
 											<span class="select-arrow"></span>
 										</div>
 									</div>
 								</div>
 								<div class="form-btn">
-									<button class="submit-btn">Check availability</button>
+									<button class="submit-btn">Book now!</button>
 								</div>
 							</form>
 						</div>
