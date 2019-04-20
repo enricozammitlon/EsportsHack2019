@@ -1,21 +1,23 @@
 <?php 
-require_once 'initDB.php';
+	require_once 'initDB.php';
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	$sql="";
      $choice = trim($_POST["filterby"]);
-		if ($choice = "Sort by No. of spectators (asc)"){
-			$sql = 'SELECT * FROM events ORDER BY specNo (ASC)'';
+		if ($choice == "Sort by No. of spectators (asc)"){
+			$sql = 'SELECT * FROM events ORDER BY specNo ASC';
 		}
-		else if $choice = "Sort by No. of spectators (desc)"){
-			$sql = 'SELECT * FROM events ORDER BY specNo (DESC)'';
+		else if ($choice == "Sort by No. of spectators (desc)"){
+			$sql = 'SELECT * FROM events ORDER BY specNo DESC';
 		}
-		else if $choice = "Sort by location (asc)"){
-			$sql = 'SELECT * FROM events ORDER BY Location (ASC)'';
+		else if ($choice == "Sort by Location (asc)"){
+			$sql = 'SELECT * FROM events ORDER BY eventLoc ASC';
 		}
-		else if $choice = "Sort by Location (desc)"){
-			$sql = 'SELECT * FROM events ORDER BY Location (DESC)'';
+		else if ($choice == "Sort by Location (desc)"){
+			$sql = 'SELECT * FROM events ORDER BY eventLoc DESC';
 		}
 
-$retval = mysqli_query($conn,$sql);
+	$retval = mysqli_query($conn,$sql);
 
 	if(! $retval ) {
 	  die('Could not get data: ' . mysqli_error($conn));
@@ -23,8 +25,9 @@ $retval = mysqli_query($conn,$sql);
 	}
 
 	else{
+		$resultmin='';
 		while($row = mysqli_fetch_assoc($retval)) {
-			echo "<article>
+			$resultmin .= "<article>
 				<a href='#' class='image'><img src='images/EventPics/".$row['eventID'].".jpg' alt='' /></a> 	
 				<h3>{$row['name']}</h3>
 				<p>{$row['description']}</p>
@@ -34,23 +37,14 @@ $retval = mysqli_query($conn,$sql);
 			</article>"; 
 		}
 	}
+	echo $resultmin;
+}
 ?>
-
-
-
-
-
-
-
-
-
-
-		<button id="organiser" onClick = 'updateMenu(this.id)'>Organiser</button>
 
 		<div class="col-sm-4">
 			<div class="form-group">
 				<span class="form-label">Sort by...</span>
-				<select class="form-control" name = "filterby">
+				<select id="sorter" class="form-control" name = "filterby">
 					<option>Sort by No. of spectators (asc)</option>
 					<option>Sort by No. of spectators (desc)</option>
 					<option>Sort by Location (asc)</option>

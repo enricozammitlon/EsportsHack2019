@@ -80,7 +80,27 @@ function updateMenu(theID){
  	});
  
 }
+
+
+$("#sorter").change(function () {
+    var request = $.ajax({
+   		url: 'sort.php',
+   		type: 'post',
+   		data: {
+   			"filterby":$("#sorter").val()
+   		}
+ 	});
  
+	request.done( function ( data ) {
+ 		$('#search-results').html( data );
+ 	});
+ 
+	request.fail( function ( jqXHR, textStatus) {
+ 		console.log( 'Sorry: ' + textStatus );
+ 	});
+});
+
+
 function buyTicket(theID){
   	var request = $.ajax({
    		url: 'buytickets.php',
